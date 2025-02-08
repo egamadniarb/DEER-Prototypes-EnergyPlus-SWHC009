@@ -526,7 +526,11 @@ DesignSpecification:OutdoorAir,
 Schedule:Compact,
   <%= zone_name %> OA Schedule,  !- Name
   Binary Control,          !- Schedule Type Limits Name
+  <% if (fan_op_fault) %>
   Through: 12/31,  For: AllDays,  Until: 24:00, 1;
+  <% else %>
+  <%= oa_sch %>
+  <% end %>
 
 <% end %>
 ZoneControl:Thermostat,
